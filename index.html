@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Suraj N. Shinde | Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: #111; /* Dark background for space theme */
+            color: #d1d5db; /* Light gray for contrast */
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+        .gradient-text {
+            background: -webkit-linear-gradient(45deg, #a78bfa, #8b5cf6, #c084fc);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .card {
+            background-color: #1f2937;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .btn-purple {
+            background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .btn-purple:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
+        }
+        nav a:hover {
+            color: #c084fc;
+        }
+        section:not(:last-child) {
+            margin-bottom: 4rem;
+        }
+        .skill-item {
+            position: relative;
+        }
+        .skill-item::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #a78bfa, #8b5cf6);
+            transition: width 0.3s ease-in-out;
+        }
+        .skill-item:hover::before {
+            width: 100%;
+        }
+        #bg-canvas {
+            z-index: -1;
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-300">
+    <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 opacity-40"></canvas>
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/50 backdrop-blur-md shadow-lg">
+        <nav class="container mx-auto flex justify-between items-center py-4">
+            <a href="#hero" class="text-2xl font-bold gradient-text">Suraj Smarty</a>
+            <div class="space-x-4 text-sm font-semibold sm:block hidden">
+                <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
+                <a href="#skills" class="hover:text-purple-400 transition-colors">Skills</a>
+                <a href="#experience" class="hover:text-purple-400 transition-colors">Experience</a>
+                <a href="#projects" class="hover:text-purple-400 transition-colors">Projects</a>
+                <a href="#contact" class="hover:text-purple-400 transition-colors">Contact</a>
+            </div>
+            <a href="#contact" class="sm:hidden block p-2 rounded-full border border-purple-500 hover:bg-purple-600 transition-colors"><i class="fas fa-bars"></i></a>
+        </nav>
+    </header>
+
+    <main class="container mx-auto pt-24 z-10 relative">
+        <!-- Hero Section -->
+        <section id="hero" class="text-center py-20 px-4 flex flex-col items-center">
+            <div class="relative w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-purple-500 shadow-lg">
+                <img src="Dark_Blue_Modern_Professional_Recruitment_LinkedIn_Profile_Picture.png" alt="Suraj Shinde" class="object-cover w-full h-full">
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold mb-4 leading-tight gradient-text">Suraj Netaji Shinde</h1>
+            <h2 class="text-xl sm:text-2xl font-light text-gray-400 mb-8">Full-Stack Web Developer</h2>
+            <p class="max-w-3xl text-gray-400 text-sm sm:text-base leading-relaxed">
+                A passionate and detail-oriented Web Developer with a strong foundation in front-end and back-end technologies. I'm eager to contribute to a dynamic development team where I can continue to learn, grow, and build impactful digital experiences.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#projects" class="btn-purple text-white font-bold py-3 px-8 rounded-full hover:scale-105 transition-all duration-300">
+                    View Projects
+                </a>
+                <a href="https://www.linkedin.com/in/suraj-shinde-16217b31b" target="_blank" class="bg-gray-700 text-white font-bold py-3 px-8 rounded-full border border-gray-600 hover:bg-gray-800 transition-colors">
+                    <i class="fab fa-linkedin mr-2"></i>LinkedIn
+                </a>
+            </div>
+        </section>
+
+        <!-- About & Skills Section -->
+        <section id="about" class="py-20 px-4">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="card rounded-3xl p-8 shadow-xl">
+                    <h3 class="text-3xl font-bold gradient-text mb-4">About Me</h3>
+                    <p class="text-gray-400 leading-relaxed text-sm sm:text-base">
+                        My journey in technology is driven by a passion for solving problems and creating intuitive digital solutions. With a strong background in both front-end and back-end development, I am a versatile developer ready to take on new challenges. I've gained practical experience through a full-stack internship and industrial training in Python and AI, which has honed my skills and prepared me for a professional career.
+                    </p>
+                    <div class="mt-6">
+                        <h4 class="text-xl font-semibold mb-2 text-white">Interests</h4>
+                        <ul class="flex space-x-4 text-gray-400">
+                            <li><i class="fas fa-book-open mr-1 text-purple-400"></i>Reading</li>
+                            <li><i class="fas fa-plane-departure mr-1 text-purple-400"></i>Traveling</li>
+                            <li><i class="fas fa-brain mr-1 text-purple-400"></i>New Learning</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card rounded-3xl p-8 shadow-xl">
+                    <h3 class="text-3xl font-bold gradient-text mb-6">Skills</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-6 text-center">
+                        <div class="skill-item p-4 rounded-lg bg-gray-800 hover:bg-purple-800/40 transition-colors">
+                            <i class="fab fa-java text-4xl mb-2 text-purple-400"></i>
+                            <p class="text-sm font-semibold">Java</p>
+                        </div>
+                        <div class="skill-item p-4 rounded-lg bg-gray-800 hover:bg-purple-800/40 transition-colors">
+                            <i class="fab fa-wordpress text-4xl mb-2 text-purple-400"></i>
+                            <p class="text-sm font-semibold">WordPress</p>
+                        </div>
+                        <div class="skill-item p-4 rounded-lg bg-gray-800 hover:bg-purple-800/40 transition-colors">
+                            <i class="fab fa-python text-4xl mb-2 text-purple-400"></i>
+                            <p class="text-sm font-semibold">Python</p>
+                        </div>
+                        <div class="skill-item p-4 rounded-lg bg-gray-800 hover:bg-purple-800/40 transition-colors">
+                            <i class="fas fa-code text-4xl mb-2 text-purple-400"></i>
+                            <p class="text-sm font-semibold">C/C++</p>
+                        </div>
+                        <div class="skill-item p-4 rounded-lg bg-gray-800 hover:bg-purple-800/40 transition-colors">
+                            <i class="fab fa-js-square text-4xl mb-2 text-purple-400"></i>
+                            <p class="text-sm font-semibold">JavaScript</p>
+                        </div>
+                        <div class="skill-item p-4 rounded-lg bg-gray-800 hover:bg-purple-800/40 transition-colors">
+                            <i class="fab fa-css3-alt text-4xl mb-2 text-purple-400"></i>
+                            <p class="text-sm font-semibold">Tailwind CSS</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience & Education Section -->
+        <section id="experience" class="py-20 px-4">
+            <h3 class="text-4xl font-bold text-center gradient-text mb-12">Experience & Education</h3>
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Experience -->
+                <div class="card rounded-3xl p-8 shadow-xl">
+                    <h4 class="text-2xl font-bold text-white mb-6"><i class="fas fa-briefcase mr-2 text-purple-400"></i>Experience</h4>
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-purple-500 pl-4 relative">
+                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-purple-500"></div>
+                            <h5 class="text-lg font-semibold text-white">Full-Stack Web Development Intern</h5>
+                            <p class="text-sm text-gray-400">Pentech.ai | Jan 2025 - Apr 2025</p>
+                            <ul class="list-disc list-inside text-gray-500 mt-2 text-sm space-y-1">
+                                <li>Gained hands-on experience with front-end and back-end technologies.</li>
+                                <li>Worked on real-time web applications and collaborative projects.</li>
+                                <li>Applied HTML, CSS, JavaScript, React, Node.js, Express, and MongoDB.</li>
+                                <li>Strengthened understanding of web architecture and RESTful APIs.</li>
+                            </ul>
+                        </div>
+                        <div class="border-l-2 border-purple-500 pl-4 relative">
+                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-purple-500"></div>
+                            <h5 class="text-lg font-semibold text-white">Python with AI Industrial Training</h5>
+                            <p class="text-sm text-gray-400">Domain Computer Education | Jun 2024 - Jul 2024</p>
+                            <ul class="list-disc list-inside text-gray-500 mt-2 text-sm space-y-1">
+                                <li>Completed a 6-week training on Python and foundational AI concepts.</li>
+                                <li>Gained practical exposure through hands-on coding and problem-solving.</li>
+                                <li>Explored AI fundamentals like machine learning and data preprocessing.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Education -->
+                <div class="card rounded-3xl p-8 shadow-xl">
+                    <h4 class="text-2xl font-bold text-white mb-6"><i class="fas fa-graduation-cap mr-2 text-purple-400"></i>Education</h4>
+                    <div class="space-y-6">
+                        <div class="border-l-2 border-purple-500 pl-4 relative">
+                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-purple-500"></div>
+                            <h5 class="text-lg font-semibold text-white">Diploma in Computer Engineering</h5>
+                            <p class="text-sm text-gray-400">Jaywant College of Engineering and Polytechnic</p>
+                            <p class="text-xs text-gray-500">2025 | Score: 80.46%</p>
+                        </div>
+                        <div class="border-l-2 border-purple-500 pl-4 relative">
+                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-purple-500"></div>
+                            <h5 class="text-lg font-semibold text-white">Computer Operator & Programming Assistant</h5>
+                            <p class="text-sm text-gray-400">Government Industrial Training Institute</p>
+                            <p class="text-xs text-gray-500">2021 | Score: 85.40%</p>
+                        </div>
+                        <div class="border-l-2 border-purple-500 pl-4 relative">
+                            <div class="absolute -left-2 top-0 w-4 h-4 rounded-full bg-purple-500"></div>
+                            <h5 class="text-lg font-semibold text-white">SSC</h5>
+                            <p class="text-sm text-gray-400">New English School</p>
+                            <p class="text-xs text-gray-500">2019 | Score: 65.40%</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="py-20 px-4">
+            <h3 class="text-4xl font-bold text-center gradient-text mb-12">Featured Projects</h3>
+            <div class="card rounded-3xl p-8 shadow-xl flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/600x400/553c9a/ffffff?text=YouTube+Downloader+App" alt="Project Screenshot" class="rounded-lg shadow-lg w-full">
+                </div>
+                <div class="md:w-1/2">
+                    <h4 class="text-2xl font-bold text-white mb-2">YouTube Video Downloader Web App (SVD)</h4>
+                    <p class="text-gray-400 mb-4 text-sm sm:text-base">
+                        Led the end-to-end development of a responsive web application that enables users to download high-quality YouTube videos.
+                    </p>
+                    <ul class="flex flex-wrap gap-2 mb-4">
+                        <li class="bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full">Java</li>
+                        <li class="bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full">JavaScript</li>
+                        <li class="bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full">Tailwind CSS</li>
+                        <li class="bg-gray-700 text-gray-300 text-xs px-3 py-1 rounded-full">WordPress</li>
+                    </ul>
+                    <a href="https://svd.42web.io" target="_blank" class="btn-purple text-white font-bold py-3 px-6 rounded-full inline-block hover:scale-105 transition-all duration-300">
+                        View Live Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="py-20 px-4">
+            <h3 class="text-4xl font-bold text-center gradient-text mb-12">Get In Touch</h3>
+            <div class="card rounded-3xl p-8 shadow-xl text-center max-w-2xl mx-auto">
+                <p class="text-gray-400 mb-6 leading-relaxed">
+                    I am currently seeking opportunities as a Web Developer. If you have a question or just want to connect, feel free to reach out. I'm always open to discussing new projects, creative ideas, or collaboration opportunities.
+                </p>
+                <div class="space-y-4">
+                    <p class="text-white text-lg"><i class="fas fa-envelope mr-2 text-purple-400"></i> surajshinde22112003@gmail.com</p>
+                    <p class="text-white text-lg"><i class="fas fa-phone mr-2 text-purple-400"></i> +91 9172277546</p>
+                </div>
+                <div class="flex justify-center space-x-6 mt-8 text-2xl text-gray-400">
+                    <a href="https://www.linkedin.com/in/suraj-shinde-16217b31b" target="_blank" class="hover:text-purple-400 transition-colors">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="https://github.com/SmartyVerse" target="_blank" class="hover:text-purple-400 transition-colors">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="https://www.instagram.com/_10010110" target="_blank" class="hover:text-purple-400 transition-colors">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="mailto:surajshinde22112003@gmail.com" class="hover:text-purple-400 transition-colors">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                    <a href="https://wa.me/qr/GE4VX7QBFTSGE1" target="_blank" class="hover:text-purple-400 transition-colors">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="text-center text-gray-500 py-8 text-sm">
+        <p>&copy; 2025 Made with 🤍 Suraj Netaji Shinde.</p>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href && href !== '#') {
+                    e.preventDefault();
+                    document.querySelector(href).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Three.js background with floating particles
+        window.onload = function() {
+            const canvas = document.getElementById('bg-canvas');
+            const sizes = {
+                width: window.innerWidth,
+                height: window.innerHeight
+            };
+
+            const scene = new THREE.Scene();
+            const camera = new THREE.PerspectiveCamera(75, sizes.width / sizes.height, 0.1, 1000);
+            const renderer = new THREE.WebGLRenderer({ canvas: canvas });
+
+            renderer.setSize(sizes.width, sizes.height);
+            renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+            // Create particle geometry
+            const particlesGeometry = new THREE.BufferGeometry();
+            const particlesCount = 10000; // Increased particle count
+            const posArray = new Float32Array(particlesCount * 3);
+            for (let i = 0; i < particlesCount * 3; i++) {
+                posArray[i] = (Math.random() - 0.5) * 100; // Spread particles further
+            }
+            particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+
+            // Create particle material
+            const particlesMaterial = new THREE.PointsMaterial({
+                size: 0.05,
+                color: '#c084fc',
+                transparent: true,
+                blending: THREE.AdditiveBlending,
+                sizeAttenuation: true
+            });
+
+            // Create particles mesh
+            const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+            scene.add(particlesMesh);
+
+            // Set up camera position
+            camera.position.z = 50;
+
+            // Mouse movement for a smoother parallax effect
+            let mouseX = 0;
+            let mouseY = 0;
+            let targetX = 0;
+            let targetY = 0;
+            const windowHalfX = window.innerWidth / 2;
+            const windowHalfY = window.innerHeight / 2;
+
+            document.addEventListener('mousemove', (event) => {
+                mouseX = (event.clientX - windowHalfX);
+                mouseY = (event.clientY - windowHalfY);
+            });
+
+            // Animation loop for a more fluid feel
+            const animate = () => {
+                window.requestAnimationFrame(animate);
+
+                // Update particle rotation for a subtle effect
+                particlesMesh.rotation.y += 0.00005; // Slower rotation
+                particlesMesh.rotation.x += 0.00002;
+
+                // Parallax effect with smoother interpolation
+                targetX = mouseX * 0.00005;
+                targetY = mouseY * 0.00005;
+                camera.rotation.y += 0.02 * (targetX - camera.rotation.y);
+                camera.rotation.x += 0.02 * (targetY - camera.rotation.x);
+
+                renderer.render(scene, camera);
+            };
+
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                sizes.width = window.innerWidth;
+                sizes.height = window.innerHeight;
+                camera.aspect = sizes.width / sizes.height;
+                camera.updateProjectionMatrix();
+                renderer.setSize(sizes.width, sizes.height);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+            });
+            
+            animate();
+        };
+    </script>
+</body>
+</html>
