@@ -71,23 +71,30 @@
 <body class="bg-gray-900 text-gray-300">
     <canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full z-0 opacity-40"></canvas>
 
-    <!-- Header & Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-gray-900/50 backdrop-blur-md shadow-lg">
-        <nav class="container mx-auto flex justify-between items-center py-4">
+        <nav class="container mx-auto flex justify-between items-center py-4 px-4 sm:px-2">
             <a href="#hero" class="text-2xl font-bold gradient-text">Suraj Smarty</a>
-            <div class="space-x-4 text-sm font-semibold sm:block hidden">
+            <div class="space-x-4 text-sm font-semibold hidden sm:block">
                 <a href="#about" class="hover:text-purple-400 transition-colors">About</a>
                 <a href="#skills" class="hover:text-purple-400 transition-colors">Skills</a>
                 <a href="#experience" class="hover:text-purple-400 transition-colors">Experience</a>
                 <a href="#projects" class="hover:text-purple-400 transition-colors">Projects</a>
                 <a href="#contact" class="hover:text-purple-400 transition-colors">Contact</a>
             </div>
-            <a href="#contact" class="sm:hidden block p-2 rounded-full border border-purple-500 hover:bg-purple-600 transition-colors"><i class="fas fa-bars"></i></a>
+            <button id="mobile-menu-btn" class="sm:hidden block p-2 rounded-full border border-purple-500 hover:bg-purple-600 transition-colors">
+                <i class="fas fa-bars"></i>
+            </button>
         </nav>
+        <div id="mobile-menu" class="hidden sm:hidden bg-gray-900/90 backdrop-blur-sm shadow-inner py-2 text-center border-t border-purple-500">
+            <a href="#about" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>About</a>
+            <a href="#skills" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>Skills</a>
+            <a href="#experience" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>Experience</a>
+            <a href="#projects" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>Projects</a>
+            <a href="#contact" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>Contact</a>
+        </div>
     </header>
 
     <main class="container mx-auto pt-24 z-10 relative">
-        <!-- Hero Section -->
         <section id="hero" class="text-center py-20 px-4 flex flex-col items-center">
             <div class="relative w-48 h-48 rounded-full overflow-hidden mb-6 border-4 border-purple-500 shadow-lg">
                 <img src="Dark_Blue_Modern_Professional_Recruitment_LinkedIn_Profile_Picture.png" alt="Suraj Shinde" class="object-cover w-full h-full">
@@ -107,7 +114,6 @@
             </div>
         </section>
 
-        <!-- About & Skills Section -->
         <section id="about" class="py-20 px-4">
             <div class="grid md:grid-cols-2 gap-12 items-center">
                 <div class="card rounded-3xl p-8 shadow-xl">
@@ -156,11 +162,9 @@
             </div>
         </section>
 
-        <!-- Experience & Education Section -->
         <section id="experience" class="py-20 px-4">
             <h3 class="text-4xl font-bold text-center gradient-text mb-12">Experience & Education</h3>
             <div class="grid md:grid-cols-2 gap-12">
-                <!-- Experience -->
                 <div class="card rounded-3xl p-8 shadow-xl">
                     <h4 class="text-2xl font-bold text-white mb-6"><i class="fas fa-briefcase mr-2 text-purple-400"></i>Experience</h4>
                     <div class="space-y-6">
@@ -188,7 +192,6 @@
                     </div>
                 </div>
 
-                <!-- Education -->
                 <div class="card rounded-3xl p-8 shadow-xl">
                     <h4 class="text-2xl font-bold text-white mb-6"><i class="fas fa-graduation-cap mr-2 text-purple-400"></i>Education</h4>
                     <div class="space-y-6">
@@ -215,7 +218,6 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
         <section id="projects" class="py-20 px-4">
             <h3 class="text-4xl font-bold text-center gradient-text mb-12">Featured Projects</h3>
             <div class="card rounded-3xl p-8 shadow-xl flex flex-col md:flex-row items-center gap-8">
@@ -240,7 +242,6 @@
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="py-20 px-4">
             <h3 class="text-4xl font-bold text-center gradient-text mb-12">Get In Touch</h3>
             <div class="card rounded-3xl p-8 shadow-xl text-center max-w-2xl mx-auto">
@@ -272,12 +273,10 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="text-center text-gray-500 py-8 text-sm">
         <p>&copy; 2025 Made with 🤍 Suraj Netaji Shinde.</p>
     </footer>
 
-    <!-- Scripts -->
     <script>
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -292,6 +291,31 @@
             });
         });
 
+        // NEW: Mobile Menu Toggle Logic
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileMenuItems = mobileMenu.querySelectorAll('[data-menu-item]');
+
+        // Function to toggle the menu
+        const toggleMobileMenu = () => {
+            mobileMenu.classList.toggle('hidden');
+            const icon = mobileMenuBtn.querySelector('i');
+            if (mobileMenu.classList.contains('hidden')) {
+                icon.classList.remove('fa-times'); // 'X' icon
+                icon.classList.add('fa-bars'); // 'Hamburger' icon
+            } else {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            }
+        }
+
+        mobileMenuBtn.addEventListener('click', toggleMobileMenu);
+
+        // Close menu when a link is clicked (for better UX)
+        mobileMenuItems.forEach(item => {
+            item.addEventListener('click', toggleMobileMenu);
+        });
+        
         // Three.js background with floating particles
         window.onload = function() {
             const canvas = document.getElementById('bg-canvas');
