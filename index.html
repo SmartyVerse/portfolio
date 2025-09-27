@@ -40,19 +40,23 @@
             transform: translateY(-2px);
             box-shadow: 0 6px 8px rgba(0, 0, 0, 0.3);
         }
-        /* New style for the secondary button in the header */
-        .btn-secondary-header {
+        /* Style for the footer button */
+        .btn-footer-secondary {
+            display: inline-flex;
+            align-items: center;
             background-color: #374151; /* Gray-700 */
             color: #fff;
-            padding: 8px 12px;
-            border-radius: 9999px; /* rounded-full */
-            font-size: 0.875rem; /* text-sm */
-            font-weight: 600; /* font-semibold */
+            padding: 10px 24px;
+            border-radius: 9999px;
+            font-size: 1rem;
+            font-weight: 600;
             border: 1px solid #4b5563; /* Gray-600 */
-            transition: background-color 0.2s;
+            transition: background-color 0.2s, transform 0.2s;
+            margin-top: 1rem; /* Space above the copyright text */
         }
-        .btn-secondary-header:hover {
+        .btn-footer-secondary:hover {
             background-color: #4b5563; /* Gray-600 hover */
+            transform: translateY(-1px);
         }
         nav a:hover {
             color: #c084fc;
@@ -79,6 +83,7 @@
         #bg-canvas {
             z-index: -1;
         }
+        /* Removing large-emoji style as the section is gone */
     </style>
 </head>
 
@@ -89,10 +94,7 @@
         <nav class="container mx-auto flex justify-between items-center py-4 px-4 sm:px-2">
             <div class="flex items-center space-x-4">
                 <a href="#hero" class="text-2xl font-bold gradient-text">Suraj Smarty</a>
-                <a href="more_about_suraj.html" class="btn-secondary-header hidden sm:inline-block">
-                    More About Me <i class="fas fa-external-link-alt ml-1 text-purple-400"></i>
-                </a>
-            </div>
+                </div>
 
             <div class="flex items-center space-x-4">
                 <div class="space-x-4 text-sm font-semibold hidden sm:block">
@@ -108,7 +110,7 @@
             </div>
         </nav>
         <div id="mobile-menu" class="hidden sm:hidden bg-gray-900/90 backdrop-blur-sm shadow-inner py-2 text-center border-t border-purple-500">
-            <a href="more_about_suraj.html" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>More About Me</a>
+            <a href="https://smartyverse.github.io/portfolio/more_about_suraj.html" target="_blank" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>More About Me</a>
             <a href="#about" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>About</a>
             <a href="#skills" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>Skills</a>
             <a href="#experience" class="block py-2 text-sm font-semibold hover:bg-purple-800/20 transition-colors" data-menu-item>Experience</a>
@@ -296,8 +298,11 @@
 </section>
     </main>
 
-    <footer class="text-center text-gray-500 py-8 text-sm">
-        <p>&copy; 2025 Made with 🤍 Suraj Netaji Shinde.</p>
+    <footer class="text-center text-gray-500 py-8 text-sm flex flex-col items-center">
+        <a href="https://smartyverse.github.io/portfolio/more_about_suraj.html" target="_blank" class="btn-footer-secondary">
+            More About Suraj Shinde <i class="fas fa-rocket ml-2 text-purple-400"></i>
+        </a>
+        <p class="mt-4">&copy; 2025 Made with 🤍 Suraj Netaji Shinde.</p>
     </footer>
 
     <script>
